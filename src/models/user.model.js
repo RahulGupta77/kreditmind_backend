@@ -14,11 +14,16 @@ const userSchema = new mongoose.Schema(
     password: { type: String, required: true },
     conversation: [
       {
-        sender_response: { type: String, required: true },
         user_query: { type: String, required: true },
+        sender_response: { type: String, required: true, default: "" },
         time: { type: Date, default: Date.now },
       },
     ],
+    panCard: { type: String, default: "" },
+    aadharCard: { type: String, default: "" },
+    bankStatement: { type: String, default: "" },
+    gstNumber: { type: String, default: "" },
+    panNumber: { type: String, default: "" },
   },
   { timestamps: true }
 );

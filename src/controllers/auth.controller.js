@@ -5,7 +5,6 @@ const register = async (req, res) => {
   try {
     const { name, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
-    console.log(hashedPassword);
 
     const user = new User({
       name,
@@ -30,7 +29,6 @@ const login = async (req, res) => {
 
     const isPasswordCorrect = await user.validatePassword(password);
     if (!isPasswordCorrect) {
-      console.log(isPasswordCorrect);
       throw new Error("Invalid credentials");
     }
 

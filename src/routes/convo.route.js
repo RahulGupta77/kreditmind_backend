@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const { convoController } = require("../controllers");
+const { userAuth } = require("../middlewares/auth");
 
-router.get("/convo", convoController.getAllConversation);
-router.post("/convo", convoController.appendNewMessage);
+router.get("/", userAuth, convoController.getAllConversation);
+router.put("/", userAuth, convoController.appendNewMessage);
 
 module.exports = router;
