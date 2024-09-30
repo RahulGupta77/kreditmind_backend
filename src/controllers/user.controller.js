@@ -13,8 +13,6 @@ const submitUserDetails = async (req, res) => {
     user.bankStatement = bankStatement;
     user.gstNumber = gstNumber;
 
-    console.log("user");
-
     const updatedUser = await User.findByIdAndUpdate(user._id, user, {
       returnDocument: "after",
     });
