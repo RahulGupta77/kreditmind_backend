@@ -34,8 +34,7 @@ const appendNewMessage = async (req, res) => {
     });
 
     setTimeout(() => {
-      res.send(getRandomResponse());
-    }, 5000);
+      res.send(updatedUser.conversation, 5000);
   } catch (err) {
     res.status(400).send("Error: " + err.message);
   }
