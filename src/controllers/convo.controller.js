@@ -6,7 +6,7 @@ const getAllConversation = async (req, res) => {
     const user = req.user;
     res.send(user.conversation);
   } catch (err) {
-    res.status(400).send("Error: " + err.message);
+    res.status(400).send("Can't able to fetch all conversations");
   }
 };
 
@@ -23,9 +23,9 @@ const appendNewMessage = async (req, res) => {
       throw new Error("Please type something");
     }
 
-    const response = getRandomResponse();
+    const senderResponse = getRandomResponse();
     user.conversation.push({
-      sender_response: response,
+      sender_response: senderResponse,
       user_query: user_query,
     });
 
@@ -34,9 +34,11 @@ const appendNewMessage = async (req, res) => {
     });
 
     setTimeout(() => {
-      res.send(updatedUser.conversation, 5000);
+      res.send(updatedUser.conversation);
+    });
   } catch (err) {
-    res.status(400).send("Error: " + err.message);
+    res.status(400).send("Error while updating the conversation");
+    console.log(err.message);
   }
 };
 

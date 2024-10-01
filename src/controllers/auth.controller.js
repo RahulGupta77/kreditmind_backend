@@ -15,7 +15,8 @@ const register = async (req, res) => {
 
     res.status(201).send("User created sucessfully");
   } catch (err) {
-    res.status(400).send("Error while saving the user " + err.message);
+    res.status(400).send("Error while saving the user ");
+    console.log(err.message);
   }
 };
 
@@ -29,7 +30,7 @@ const login = async (req, res) => {
 
     const isPasswordCorrect = await user.validatePassword(password);
     if (!isPasswordCorrect) {
-      throw new Error("Invalid credentials");
+      throw new Error("Incorrect Password");
     }
 
     const token = await user.getJWT();
@@ -44,6 +45,7 @@ const login = async (req, res) => {
     res.status(201).send("Login Successfull");
   } catch (err) {
     res.status(400).send("Invalid credentials");
+    console.log(err.message);
   }
 };
 

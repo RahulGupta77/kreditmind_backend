@@ -19,8 +19,17 @@ const submitUserDetails = async (req, res) => {
 
     res.send(updatedUser);
   } catch (err) {
-    res.status(400).send("Error: " + err.message);
+    res.status(400).send("Failed to update the error");
+    console.log(err.message);
   }
 };
 
-module.exports = { submitUserDetails };
+const getUserDetails = (req, res) => {
+  try {
+    res.send(req.user);
+  } catch (error) {
+    res.status(404).send("User not found");
+  }
+};
+
+module.exports = { submitUserDetails, getUserDetails };
