@@ -35,7 +35,7 @@ const appendNewMessage = async (req, res) => {
 
     setTimeout(() => {
       res.send(updatedUser.conversation);
-    });
+    }, 6000);
   } catch (err) {
     res.status(400).send("Error while updating the conversation");
     console.log(err.message);
