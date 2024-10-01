@@ -36,12 +36,11 @@ const login = async (req, res) => {
 
     res.cookie("token", token, {
       expires: new Date(Date.now() + 15 * 3600000),
-       httpOnly: true,
-    secure: true, 
-    sameSite: 'lax'
+      httpOnly: true,
+      secure: true,
+      sameSite: "None",
     });
 
-	
     res.status(201).send("Login Successfull");
   } catch (err) {
     res.status(400).send("Invalid credentials");
