@@ -37,7 +37,7 @@ const login = async (req, res) => {
     res.cookie("token", token, {
       expires: new Date(Date.now() + 15 * 3600000),
        httpOnly: true,
-    secure: false, 
+    secure: true, 
     sameSite: 'lax'
     });
 
