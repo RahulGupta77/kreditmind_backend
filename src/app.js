@@ -8,7 +8,11 @@ const routes = require("./routes");
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors());
+app.use(cors({
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    origin: ['http://localhost:3000']
+}));
 app.options("*", cors());
 
 app.use("/v1", routes);
@@ -25,8 +29,8 @@ connectDb()
   .then(() => {
     console.log("Database connected successfully");
 
-    app.listen(3000, (req, res) => {
-      console.log("server started on port 3000...");
+    app.listen(8000, (req, res) => {
+      console.log("server started on port 8000...");
     });
   })
   .catch((err) => {
